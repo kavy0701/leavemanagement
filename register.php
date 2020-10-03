@@ -10,7 +10,7 @@ session_start();
     <title>Registration</title>
     <?php include 'links.php' ?>
     <style>
-      <?php include 'css/register.css'; ?>
+      <?php include 'register.css'; ?>
     </style>
 </head>
 <body>
