@@ -14,6 +14,51 @@ session_start();
 </style>
 </head>
 <body>
+    
+    <?php 
+include 'connection.php';
+
+
+if(isset($_POST['submit'])){
+  $email= $_POST['email'];
+  $password= $_POST['password'];
+
+  $email_search =" select * from registration where email='$email'";
+  $query= mysqli_query($con,$email_search);
+
+  $email_count = mysqli_num_rows($query);
+
+  if ($email_count==1){
+    while($row=mysqli_fetch_assoc($query)){
+      if(password_verify($password,$row['password'])){
+      ?>
+      <script>
+          alert("Login Successful");
+          location.replace("dashboard.php");
+        </script>
+      <?php
+    }else{
+      ?>
+        <script>
+          alert("Password Incorrect");
+        </script>
+      <?php
+    }
+
+    }
+  }
+  else{
+    ?>
+        <script>
+          alert("Invalid Email");
+        </script>
+    <?php
+    }
+    
+    
+  }
+    ?>
+    
 <div class="backgroundimg">
 
 <!--navigation bar -->
