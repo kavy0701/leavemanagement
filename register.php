@@ -136,10 +136,14 @@ if(isset($_POST['submit'])){
   $year = mysqli_real_escape_string($con,$_POST['year']);
   $course = mysqli_real_escape_string($con,$_POST['course']);
   $post = mysqli_real_escape_string($con,$_POST['post']);
+    
+  $pass=password_hash($password, PASSWORD_DEFAULT);
+  $cpass=password_hash($cpassword, PASSWORD_DEFAULT);
 
 
-  $pass=password_hash($password, PASSWORD_BCRYPT);
-  $cpass=password_hash($cpassword, PASSWORD_BCRYPT);
+    
+  /**$pass=password_hash($password, PASSWORD_BCRYPT);
+  $cpass=password_hash($cpassword, PASSWORD_BCRYPT);**/
   
   /**checks whether email already exists or not */
   $emailquery="select * from registration where email='$email'";
