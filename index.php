@@ -30,7 +30,8 @@ if(isset($_POST['submit'])){
 
   if ($email_count==1){
     while($row=mysqli_fetch_assoc($query)){
-      if(password_verify($password,$row['password'])){
+        $_SESSION['name']=$row['name'];
+        if(password_verify($password,$row['password'])){
       ?>
       <script>
           alert("Login Successful");
