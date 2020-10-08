@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: black;
+    box-sizing:border-box;
+    font-family: sans-serif;
+}
+
+.backgroundimg{
+    background-color: #909090;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.container{
+    position: relative;
+    top: 2vh;
+}
+
+.profile-container{
+    text-align: left;
+    border: 0;
+    border-radius: 3rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+}
+
+.profile-container .card-title {
+    margin-bottom: 1.9rem;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.profile-container .card-body {
+    padding: 5rem;
+}
+
+.form {
+    width: 100%;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 0.6rem;
+}
+
+.form-group input {
+    height: auto;
+    border-radius: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.form .btn {
+    font-size: 17px;
+    border-radius: 1.5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+}
+
+.form-group label{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
