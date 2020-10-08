@@ -13,7 +13,7 @@ session_start();
     <?php include 'links.php' ?>
     <?php include 'header.php' ?>
     <style>
-      <?php include 'css/dashboard.css'; ?>
+      <?php include 'css/header.css'; ?>
     </style>
 </head>
 <body>
