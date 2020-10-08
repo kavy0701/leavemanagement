@@ -11,18 +11,20 @@ if($_SESSION['is_login']){
   header("Location:index.php");
 }
 
-$sql="select name,email,mobile from registration where email='$email'";
+$sql="select name,mobile,year,course from registration where email='$email'";
 $result= $con->query($sql);
 if($result->num_rows == 1){
   $row=$result->fetch_assoc();
   $name=$row['name'];
   $mobile=$row['mobile'];
+  $year=$row['year'];
+  $course=$row['course'];
 }
 
 //code for updating details in the table
 
 if(isset($_REQUEST['save'])){
-  if($_REQUEST['name']== "" || $_REQUEST['mobile']=="") {
+  if($_REQUEST['name']== ""||$_REQUEST['mobile']=="") {
       $passmsg = '<div class="alert alert-warning col-sm-6 mt-2" role="alert">Fill all Fields </div>';
   }else{
     $name = $_REQUEST['name'];
@@ -69,14 +71,20 @@ if(isset($_REQUEST['save'])){
   </div>
 
   <div class="form-group">
-    <label for="email">Email</label><input type="email" name="email" id="email" class="form-control" autocomplete="off" value="<?php echo $email ?>" readonly>     
+    <label for="email">Email</label><input type="email" name="email" id="email" class="form-control" autocomplete="off" value="<?php echo $email ?>" readonly >     
   </div>
 
   <div class="form-group">
     <label for="mobile">Mobile no</label><input type="number" name="mobile" id="mobile" class="form-control" autocomplete="off" value="<?php echo $mobile ?>" >     
   </div>
 
-  
+  <div class="form-group">
+    <label for="year">Year</label><input type="text" name="year" id="year" class="form-control" autocomplete="off" value="<?php echo $year ?>" readonly>     
+  </div>
+
+  <div class="form-group">
+    <label for="course">Course</label><input type="text" name="course" id="course" class="form-control" autocomplete="off" value="<?php echo $course ?>" readonly>     
+  </div>
 
 
   <br>
@@ -88,6 +96,15 @@ if(isset($_REQUEST['save'])){
     echo $passmsg;
   } 
   ?>
+
+</form>
+
+</div>     <!--background image closes here -->
+
+<!--Profile content ended-->
+    
+</body>
+</html>
 
 </form>
 
