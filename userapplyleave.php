@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply Leave</title>
 
-    <?php include 'connection.php' ?>
+    
     <?php include 'links.php' ?>
     <?php include 'header.php' ?>
     <style>
@@ -48,11 +52,11 @@
     <br>
 
     <div class="form-label-group">
-        <label for="reason">Reason</label> <textarea class="form-control" rows="3" cols="20" required></textarea>
+        <label for="reason">Reason</label> <textarea class="form-control" name="reason" id="reason" rows="3" cols="20" required></textarea>
     </div>
     <br>
     
-    <button class="btn btn-primary" type="button" name="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
 
 </form>                  <!--form ends-->
 
@@ -61,3 +65,45 @@
   
 </body>
 </html>
+
+
+
+<?php
+include 'connection.php';
+
+if(isset($_POST['submit'])){
+  $leave_type = mysqli_real_escape_string($con,$_POST['leave_type']);
+  $duration = mysqli_real_escape_string($con,$_POST['duration']);
+  $from_date = mysqli_real_escape_string($con,$_POST['from_date']);
+  $to_date = mysqli_real_escape_string($con,$_POST['to_date']);
+  $reason = mysqli_real_escape_string($con,$_POST['reason']);
+
+  
+  $insertquery = "insert into apply_leave(leave_type,duration,from_date,to_date,reason) values('$leave_type','$duration','$from_date','$to_date','$reason') ";
+  $res = mysqli_query($con,$insertquery);
+  if($res){
+      ?>
+      <script>
+        alert("Submitted");
+      </script>  
+      <?php
+    }else{
+      ?>
+      <script>
+        alert("Not Submitted");
+      </script>
+      <?php
+    }
+  }
+
+    ?>
+
+
+
+
+
+
+     
+
+
+
