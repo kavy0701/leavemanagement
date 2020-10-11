@@ -11,6 +11,7 @@
     <?php include 'header.php' ?>
     <style>
       <?php include 'css/header.css'; ?>
+      <?php include 'css/status.css'; ?>
     </style>
 
 </head>
@@ -19,15 +20,15 @@
 <h3>Status of your leave</h3>
 <br>
 <table class="table table-bordered">
-<thead>
+<thead class="thead-light">
       <tr>
-        <th>no</th>
-        <th>leave_type</th>
-        <th>duration</th>
-        <th>from_date</th>
-        <th>to_date</th>
-        <th>reason</th>
-        <th>status</th>
+        <th scope="col">no</th>
+        <th scope="col">leave_type</th>
+        <th scope="col">duration</th>
+        <th scope="col">from_date</th>
+        <th scope="col">to_date</th>
+        <th scope="col">reason</th>
+        <th scope="col">status</th>
       </tr>
     </thead>
 
