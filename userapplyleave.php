@@ -1,6 +1,60 @@
 <?php 
-session_start();
-?>
+
+include 'connection.php';
+session_start();   //session starts
+
+
+if($_SESSION['is_login']){
+  $email = $_SESSION['email'];
+}else{
+  header("Location:index.php");
+}
+
+$sql="select name,email from registration where email='$email'";
+$result= $con->query($sql);
+if($result->num_rows == 1){
+  $row=$result->fetch_assoc();
+  $name=$row['name'];
+  
+}
+
+
+
+
+if(isset($_POST['submit'])){
+  $name = mysqli_real_escape_string($con,$_POST['name']);
+  $email = mysqli_real_escape_string($con,$_POST['email']);
+  $leave_type = mysqli_real_escape_string($con,$_POST['leave_type']);
+  $duration = mysqli_real_escape_string($con,$_POST['duration']);
+  $from_date = mysqli_real_escape_string($con,$_POST['from_date']);
+  $to_date = mysqli_real_escape_string($con,$_POST['to_date']);
+  $reason = mysqli_real_escape_string($con,$_POST['reason']);
+
+
+
+ 
+
+  $insertquery = "insert into apply_leave(name,email,leave_type,duration,from_date,to_date,reason) values('$name','$email','$leave_type','$duration','$from_date','$to_date','$reason') ";
+  $res = mysqli_query($con,$insertquery);
+  if($res){
+      ?>
+      <script>
+        alert("Submitted");
+      </script>  
+      <?php
+    }else{
+      ?>
+      <script>
+        alert("Not Submitted");
+      </script>
+      <?php
+    }
+  }
+
+ 
+
+    ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +80,20 @@ session_start();
     <h3 class="row justify-content-center">Apply Leave</h3>
     <br>
     
-    <form method="POST">           <!--form-->
+    <form class="form" method="POST">           <!--form-->
+
     <div class="form-label-group">
-        <label for="leave">Leave Type</label> <input type="text" name="leave_type" id="leave_type" class="form-control" required>
+        <label for="name">Name</label> <input type="text" name="name" id="name" class="form-control" required autocomplete="off" value="<?php echo $name ?>" readonly>
+    </div>
+    <br>
+
+    <div class="form-label-group">
+        <label for="email">email</label> <input type="email" name="email" id="email" class="form-control" required autocomplete="off" value="<?php echo $email ?>" readonly>
+    </div>
+    <br>
+
+    <div class="form-label-group">
+        <label for="leave">Leave Type</label> <input type="text" name="leave_type" id="leave_type" class="form-control" required autocomplete="off">
     </div>
     <br>
     
@@ -68,37 +133,13 @@ session_start();
 
 
 
-<?php
-include 'connection.php';
-
-if(isset($_POST['submit'])){
-  $leave_type = mysqli_real_escape_string($con,$_POST['leave_type']);
-  $duration = mysqli_real_escape_string($con,$_POST['duration']);
-  $from_date = mysqli_real_escape_string($con,$_POST['from_date']);
-  $to_date = mysqli_real_escape_string($con,$_POST['to_date']);
-  $reason = mysqli_real_escape_string($con,$_POST['reason']);
-
-  
-  $insertquery = "insert into apply_leave(leave_type,duration,from_date,to_date,reason) values('$leave_type','$duration','$from_date','$to_date','$reason') ";
-  $res = mysqli_query($con,$insertquery);
-  if($res){
-      ?>
-      <script>
-        alert("Submitted");
-      </script>  
-      <?php
-    }else{
-      ?>
-      <script>
-        alert("Not Submitted");
-      </script>
-      <?php
-    }
-  }
-
-    ?>
 
 
+
+
+
+
+     
 
 
 
