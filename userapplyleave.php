@@ -30,11 +30,13 @@ if(isset($_POST['submit'])){
   $to_date = mysqli_real_escape_string($con,$_POST['to_date']);
   $reason = mysqli_real_escape_string($con,$_POST['reason']);
 
+  $status=mysqli_real_escape_string($con,$_POST['status']);
+
 
 
  
 
-  $insertquery = "insert into apply_leave(name,email,leave_type,duration,from_date,to_date,reason) values('$name','$email','$leave_type','$duration','$from_date','$to_date','$reason') ";
+  $insertquery = "insert into apply_leave(name,email,leave_type,duration,from_date,to_date,reason,status) values('$name','$email','$leave_type','$duration','$from_date','$to_date','$reason','$status') ";
   $res = mysqli_query($con,$insertquery);
   if($res){
       ?>
@@ -130,6 +132,19 @@ if(isset($_POST['submit'])){
   
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+     
+
+
+
 
 
 
