@@ -3,6 +3,7 @@ body html{
     padding: 0;
 }
 
+/*background image*/
 .backgroundimg{
     background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-021.jpg") ;
     background-size: cover;
@@ -23,6 +24,7 @@ body html{
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
+/*title*/
 .card-signin .card-title {
     margin-bottom: 1.8rem;
     font-weight: 400;
@@ -72,3 +74,8 @@ input::-webkit-inner-spin-button {
     height: auto;
     border-radius: 2rem;
 }
+
+
+
+
+
