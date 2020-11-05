@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();    //starts the session
 ?>
 
 <!DOCTYPE html>
@@ -8,20 +8,20 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <?php include 'links.php' ?>
+    <?php include 'C:\xampp\htdocs\onlineleavemanagemet\links.php' ?>
     <style>
-      <?php include 'register.css'; ?>
+      <?php include 'user_register.css'; ?>
     </style>
 </head>
 <body>
 
-<div class="column backgroundimg">
+<div class="column backgroundimg">   <!--background image starts here-->
 
-<!--navigation bar -->
+<!--navigation bar starts here -->
 <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
 <a class="navbar-brand" href="#">Online Leave Management</a>
     
-<!--links-->
+<!--navbar links-->
 
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item active px-4">
@@ -30,13 +30,15 @@ session_start();
   </ul>
 </nav>
 
-<!--Registration form-->
+<!-- navbar ends here -->
 
-<div class="container">
-  <div class="row justify-content-center">
+<!--Registration form starts here-->
+
+<div class="container">                                    <!--container starts -->
+  <div class="row justify-content-center">                 <!--row starts-->
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin py-4">
-        <div class="card-body">
+      <div class="card card-signin py-4">                  
+        <div class="card-body">                            
           <h5 class="card-title text-center">Registration Form</h5>
 
           <!--Form-->
@@ -74,6 +76,7 @@ session_start();
               <div class="form-label-group">
                 <label for="year">Select year</label>
                 <select name="year" id="year" name="year" class="form-control" required>
+                    <option value="select year">Select year</option>
                     <option value="fy">FY</option>
                     <option value="sy">SY</option>
                     <option value="ty">TY</option>
@@ -98,34 +101,29 @@ session_start();
               <div class="form-label-group">
                 <label for="post">Select Post</label>
                 <select name="post" id="post" name="post" class="form-control" required>
-                    <option value="Student">Student</option>
+                    <option value="Student" name="Student">Student</option>
                     <option value="Staff">Staff</option>
                     <option value="HOD">HOD</option>
                 </select>
               </div>
               <br><br>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="submit">Register</button>
-              
-
-
-
-
 
           </form>    
         </div>
       </div>
     </div>
-   </div>
-</div>  
+   </div>                              <!-- row ends-->
+</div>                                 <!-- container ends -->
 
     
 </body>
 </html>
 
-
+<!--php code for inserting valid data in database-->
 <?php
 
-include 'connection.php';
+include 'C:\xampp\htdocs\onlineleavemanagemet\connection.php';
 
 if(isset($_POST['submit'])){
   $name = mysqli_real_escape_string($con,$_POST['name']);
@@ -136,17 +134,16 @@ if(isset($_POST['submit'])){
   $year = mysqli_real_escape_string($con,$_POST['year']);
   $course = mysqli_real_escape_string($con,$_POST['course']);
   $post = mysqli_real_escape_string($con,$_POST['post']);
-    
+
+
+  //code for encrypted password and inserting in database
   $pass=password_hash($password, PASSWORD_DEFAULT);
   $cpass=password_hash($cpassword, PASSWORD_DEFAULT);
 
-
-    
-  /**$pass=password_hash($password, PASSWORD_BCRYPT);
-  $cpass=password_hash($cpassword, PASSWORD_BCRYPT);**/
+ 
   
   /**checks whether email already exists or not */
-  $emailquery="select * from registration where email='$email'";
+  $emailquery="select * from user_register where email='$email'";
   $query=mysqli_query($con,$emailquery);
 
   $emailcount = mysqli_num_rows($query);
@@ -159,18 +156,18 @@ if(isset($_POST['submit'])){
   }
   else{
     if($password === $cpassword){
-      $insertquery = "insert into registration(name,email,password,cpassword,mobile,year,course,post) values('$name','$email','$pass','$cpass','$mobile','$year','$course','$post') ";
+      $insertquery = "insert into user_register(name,email,password,cpassword,mobile,year,course,post) values('$name','$email','$pass','$cpass','$mobile','$year','$course','$post') ";
       $res = mysqli_query($con,$insertquery);
       if($res){
         ?>
         <script>
-          alert("Data inserted");
+          alert("Registered Successfully");
         </script>  
         <?php
       }else{
         ?>
         <script>
-          alert("Data not inserted");
+          alert("Unable to register");
         </script>
         <?php
       }
@@ -182,14 +179,7 @@ if(isset($_POST['submit'])){
         </script>
         <?php
   }
-
-
 } 
-
-  
-
-  
-
 }
 
 ?>
