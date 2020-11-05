@@ -11,7 +11,7 @@
 }
 
 .form-label-group label{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: cursive;
     font-weight: bold;
 }
 
@@ -38,4 +38,13 @@
     font-weight: bold;
     padding: 1rem;
     transition: all 0.2s;
+}
+
+.backgroundimg{
+    background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-021.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%
 }
