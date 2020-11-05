@@ -1,6 +1,6 @@
 <?php 
 
-include 'connection.php';
+include 'C:\xampp\htdocs\onlineleavemanagemet\connection.php';
 session_start();   //session starts
 
 
@@ -10,7 +10,7 @@ if($_SESSION['is_login']){
   header("Location:index.php");
 }
 
-$sql="select name,email from registration where email='$email'";
+$sql="select name,email from user_register where email='$email'";
 $result= $con->query($sql);
 if($result->num_rows == 1){
   $row=$result->fetch_assoc();
@@ -30,13 +30,11 @@ if(isset($_POST['submit'])){
   $to_date = mysqli_real_escape_string($con,$_POST['to_date']);
   $reason = mysqli_real_escape_string($con,$_POST['reason']);
 
-  $status=mysqli_real_escape_string($con,$_POST['status']);
-
-
+  
 
  
 
-  $insertquery = "insert into apply_leave(name,email,leave_type,duration,from_date,to_date,reason,status) values('$name','$email','$leave_type','$duration','$from_date','$to_date','$reason','$status') ";
+  $insertquery = "insert into applied_leave(name,email,leave_type,duration,from_date,to_date,reason) values('$name','$email','$leave_type','$duration','$from_date','$to_date','$reason') ";
   $res = mysqli_query($con,$insertquery);
   if($res){
       ?>
@@ -66,17 +64,17 @@ if(isset($_POST['submit'])){
     <title>Apply Leave</title>
 
     
-    <?php include 'links.php' ?>
-    <?php include 'header.php' ?>
+    <?php include 'C:\xampp\htdocs\onlineleavemanagemet\links.php' ?>
+    <?php include 'C:\xampp\htdocs\onlineleavemanagemet\user\header.php' ?>
     <style>
-      <?php include 'css/header.css'; ?>
-      <?php include 'css/applyleave.css';?>
+      <?php include 'C:\xampp\htdocs\onlineleavemanagemet\user\header.css'; ?>
+      <?php include 'C:\xampp\htdocs\onlineleavemanagemet\user\user_applyleave.css';?>
     </style>
 
 </head>
 <body>
 
-
+<div class="backgroundimg">
 <div class="container">            <!-- container starts-->
 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
     <h3 class="row justify-content-center">Apply Leave</h3>
@@ -95,7 +93,12 @@ if(isset($_POST['submit'])){
     <br>
 
     <div class="form-label-group">
-        <label for="leave">Leave Type</label> <input type="text" name="leave_type" id="leave_type" class="form-control" required autocomplete="off">
+        <label for="leave">Leave Type</label>
+        <select name="leave_type" id="leave_type" class="form-control" required>
+            <option value="casual">Casual</option>
+            <option value="medical">Medical</option>
+            <option value="other">Other</option>
+        </select>
     </div>
     <br>
     
@@ -129,7 +132,7 @@ if(isset($_POST['submit'])){
 
 </div>
 </div>                   <!--container ends-->
-  
+</div> 
 </body>
 </html>
 
@@ -142,24 +145,5 @@ if(isset($_POST['submit'])){
 
 
      
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-
-
-
-     
-
 
 
