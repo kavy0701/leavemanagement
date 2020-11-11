@@ -1,0 +1,8 @@
+.backgrd{
+    background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-021.jpg") ;
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+height: 100vh;
+width: 100%;
+}
