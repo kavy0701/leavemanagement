@@ -86,7 +86,7 @@
                             include 'C:\xampp\htdocs\onlineleavemanagemet\connection.php';
                             
                             $i=1;
-                            $query = "select * from staff_applied_leave";
+                            $query = "select * from  applied_leave where post='Staff'";
                             $res = mysqli_query($con,$query);
                             
                             $count = mysqli_num_rows($res);
