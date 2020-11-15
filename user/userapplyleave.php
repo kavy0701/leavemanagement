@@ -10,11 +10,12 @@ if($_SESSION['is_login']){
   header("Location:index.php");
 }
 
-$sql="select name,email from user_register where email='$email'";
+$sql="select name,email,post from user_register where email='$email'";
 $result= $con->query($sql);
 if($result->num_rows == 1){
   $row=$result->fetch_assoc();
   $name=$row['name'];
+  $post=$row['post'];
   
 }
 
@@ -24,6 +25,7 @@ if($result->num_rows == 1){
 if(isset($_POST['submit'])){
   $name = mysqli_real_escape_string($con,$_POST['name']);
   $email = mysqli_real_escape_string($con,$_POST['email']);
+  $post = mysqli_real_escape_string($con,$_POST['post']);
   $leave_type = mysqli_real_escape_string($con,$_POST['leave_type']);
   $duration = mysqli_real_escape_string($con,$_POST['duration']);
   $from_date = mysqli_real_escape_string($con,$_POST['from_date']);
@@ -34,7 +36,7 @@ if(isset($_POST['submit'])){
 
  
 
-  $insertquery = "insert into applied_leave(name,email,leave_type,duration,from_date,to_date,reason) values('$name','$email','$leave_type','$duration','$from_date','$to_date','$reason') ";
+  $insertquery = "insert into applied_leave(name,email,post,leave_type,duration,from_date,to_date,reason) values('$name','$email','$post','$leave_type','$duration','$from_date','$to_date','$reason') ";
   $res = mysqli_query($con,$insertquery);
   if($res){
       ?>
@@ -89,6 +91,11 @@ if(isset($_POST['submit'])){
 
     <div class="form-label-group">
         <label for="email">email</label> <input type="email" name="email" id="email" class="form-control" required autocomplete="off" value="<?php echo $email ?>" readonly>
+    </div>
+    <br>
+
+    <div class="form-label-group">
+        <label for="post">post</label> <input type="text" name="post" id="post" class="form-control" required autocomplete="off" value="<?php echo $post ?>" readonly>
     </div>
     <br>
 
