@@ -8,14 +8,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <?php include 'C:\xampp\htdocs\onlineleavemanagemet\links.php' ?>
+    <?php include 'C:\xampp\htdocs\onlineleavemanagemet\links.php' ?>  <!--links-->
     <style>
-      <?php include 'user_register.css'; ?>
+      <?php include 'user_register.css'; ?>  /*css file*/
     </style>
 </head>
 <body>
 
-  <div class="column backgroundimg">   <!--background image starts here-->
+  <!--background image starts here-->
+  <div class="column backgroundimg">   
 
     <!--navigation bar starts here -->
     <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
@@ -23,19 +24,25 @@
     
       <!--navbar links-->
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item active px-4">
-          <a class="nav-link" href="index.php">Sign in</a>
-        </li>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Sign in 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="../admin/admin_signin.php">Admin</a>
+          <a href="../hod/hod_signin.php">Hod</a>
+          <a href="../user/index.php">User</a>
+        </div>
+      </div> 
       </ul>
     </nav> 
     <!-- navbar ends here -->
 
     <!--Registration form starts here-->
-
     <div class="container">                      <!--container starts -->
       <div class="row justify-content-center">        <!--row starts-->
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="card card-signin py-4">                  
+          <div class="card card-signin py-1">                  
             <div class="card-body">                            
               <h5 class="card-title text-center">Registration Form</h5>
 
@@ -87,14 +94,9 @@
 
                 <div class="form-label-group">
                   <label for="course">Select Course</label>
-                  <select name="course" id="course" name="course"class="form-control" required>
+                  <select name="course" id="course" name="course" class="form-control" required>
                     <option value="cs">CS</option>
-                    <option value="it">IT</option>
-                    <option value="bcom">BCom</option>
-                    <option value="baf">BAF</option>
-                    <option value="bbi">BBI</option>
-                    <option value="bfm">BFM</option>
-                    <option value="bms">BMS</option>
+                    <option value="it">IT</option>    
                   </select>
                 </div>
                 <br>
@@ -108,7 +110,6 @@
                   </select>
                 </div>
                 <br>
-                <br>
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="submit">Register</button>
 
               </form>    
@@ -117,7 +118,10 @@
         </div>
       </div>                              <!-- row ends-->
     </div>                                 <!-- container ends -->
-  </div>                               <!--background image ends-->
+  </div> 
+  <!--background image ends-->  
+
+  <!--code for password visibility-->                            
   <script>
     var pwd = document.getElementById('password');
     var eye = document.getElementById('eye');
@@ -129,6 +133,25 @@
       (pwd.type == 'password') ? pwd.type = 'text': pwd.type = 'password';
     }
 
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
   </script> 
 </body>
 </html>
