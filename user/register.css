@@ -53,6 +53,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+/* Register Button*/
 .form-signin .btn {
     font-size: 90%;
     border-radius: 5rem;
@@ -76,7 +77,8 @@ input::-webkit-inner-spin-button {
     height: auto;
     border-radius: 2rem;
 }
- 
+
+/*password icon*/
 .icon .fas{ 
     position: absolute; 
     margin-left:350px;
@@ -93,3 +95,42 @@ input::-webkit-inner-spin-button {
         background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-021.jpg") ;
     }
 }
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+  
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: whitesmoke;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown a:hover {background-color: #ddd;}
+  
+.show {display: block;}
